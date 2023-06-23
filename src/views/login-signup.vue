@@ -51,13 +51,13 @@ export default {
           password: this.user.password,
           fullname: this.user.name,
         })
-        this.$router.push('/home')
+        this.$router.push('/')
       } else {
         const isLoggedIn = await userService.login({
           username: this.user.name,
           password: this.user.password,
         })
-        if (isLoggedIn) this.$router.push('/home')
+        if (isLoggedIn) this.$router.push('/')
       }
     },
 

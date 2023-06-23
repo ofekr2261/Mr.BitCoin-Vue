@@ -7,7 +7,9 @@
         <h3>Email: {{ contact.email }}</h3>
         <h3>Phone: {{ contact.phone }}</h3>
         <h3 v-if="!contact.balance">Balance: 0 ₿</h3>
-        <h3 v-if="contact.balance">Balance: {{ contact.balance }} ₿</h3>
+        <h3 v-if="contact.balance">
+          Balance: {{ contact.balance.toFixed(2) }} ₿
+        </h3>
         <pre v-if="contact.transaction">
 transaction: {{ contact.transaction }}</pre
         >
@@ -58,8 +60,8 @@ export default {
     async onSubmit() {
       const transaction = {
         at: new Date(),
-        by: this.user.name,
-        amount: this.tip,
+        by: this.user.fullname,
+        amount: `${this.tip}₿`,
       }
       let contact = this.contact
       console.log('contact:', contact)
