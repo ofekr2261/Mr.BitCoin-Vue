@@ -4,7 +4,7 @@
       <div class="logo-container">
         <img src="../assets/img/bitcoin-logo.svg" alt="" />
         <h2>
-          <RouterLink @click="closeNavbar" to="/home" class="logo"
+          <RouterLink @click="closeNavbar" to="/" class="logo"
             >Mr.BitCoin</RouterLink
           >
         </h2>
@@ -17,7 +17,7 @@
         <span>Welcome {{ user.fullname }}!</span>
       </div>
       <nav ref="nav">
-        <RouterLink @click="closeNavbar" to="/home">Home</RouterLink>
+        <RouterLink @click="closeNavbar" to="/">Home</RouterLink>
         <RouterLink @click="closeNavbar" to="/contact">Contacts</RouterLink>
         <RouterLink @click="closeNavbar" to="/stats">Stats</RouterLink>
       </nav>
