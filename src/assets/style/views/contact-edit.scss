@@ -1,0 +1,43 @@
+.contact-edit {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  padding: 10px;
+  padding-top: 50px;
+  position: relative;
+
+  h2 {
+    padding-bottom: 30px;
+  }
+
+  input {
+    border: 1px solid $almost-black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    width: 250px;
+  }
+
+  button {
+    margin-top: 30px;
+  }
+
+  .close-btn {
+    position: absolute;
+    right: 20px;
+    span {
+      padding-top: 20px;
+      font-size: 2rem;
+    }
+  }
+
+  .clear-btn {
+    color: $p-clr1;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  img {
+    width: 250px;
+  }
+}
