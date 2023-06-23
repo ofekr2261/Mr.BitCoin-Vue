@@ -49,7 +49,7 @@ export default {
   methods: {
     async removeContact(contactId) {
       const msg = {
-        txt: `Contacts ${contactId} deleted.`,
+        txt: `Contact ${contactId} deleted.`,
         type: 'success',
         timeout: 2500,
       }
@@ -63,14 +63,17 @@ export default {
         by: this.user.fullname,
         amount: `${this.tip}₿`,
       }
-      let contact = this.contact
-      console.log('contact:', contact)
-      contact.balance
-        ? (contact.balance += this.tip)
-        : (contact.balance = this.tip)
-      if (!contact.transaction) contact.transaction = []
-      contact.transaction.push(transaction)
-      contactService.saveContact(contact)
+      let updatedContact = {
+        ...this.contact,
+        balance: this.contact.balance
+          ? this.contact.balance + this.tip
+          : this.tip,
+        transaction: this.contact.transaction
+          ? [...this.contact.transaction, transaction]
+          : [transaction],
+      }
+      await contactService.saveContact(updatedContact)
+      this.contact = updatedContact
     },
   },
 }

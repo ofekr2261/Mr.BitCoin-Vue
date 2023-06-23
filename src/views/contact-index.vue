@@ -2,7 +2,7 @@
   <div class="contact-index main-layout full">
     <ContactsFilter @filter="onSetFilterBy" />
     <RouterLink class="add-link" to="/contact/edit"
-      ><button class="primary">Add a Contact</button></RouterLink
+      ><button class="primary">Add a Contacts</button></RouterLink
     >
     <ContactsList
       @remove="removeContact"
@@ -26,11 +26,6 @@ export default {
   async created() {
     const filterBy = this.filterBy
     this.$store.dispatch({ type: 'loadContacts', filterBy })
-
-    if (!this.isContactCreatedListenerSet) {
-      eventBus.$on('contactCreated', this.handleContactCreated)
-      this.isContactCreatedListenerSet = true
-    }
   },
   methods: {
     async removeContact(contactId) {
@@ -55,9 +50,6 @@ export default {
     onSetFilterBy(filterBy) {
       this.filterBy = filterBy
       this.$store.dispatch({ type: 'loadContacts', filterBy })
-    },
-    handleContactCreated(contact) {
-      this.$store.commit({ type: 'addContact', contact })
     },
   },
   computed: {
