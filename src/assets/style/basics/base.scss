@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  font-size: rem(16px);
+  margin: 0;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  color: $almost-black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 56px;
+  font-family: Arial, Helvetica, sans-serif;
+  &.large {
+    font-size: 100px;
+    line-height: 100px;
+  }
+}
+h2 {
+  font-size: 42px;
+  line-height: 42px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+  font-size: 16px;
+  line-height: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+section,
+main,
+footer {
+  padding: 5px;
+}
+
+img {
+  width: 100%;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+  &.large {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .app-main-container {
+    flex-grow: 1;
+
+    margin: 0;
+    padding: 0;
+  }
+}
+
+button {
+  &.primary {
+    @include btn($type: primary);
+  }
+  &.secondary {
+    @include btn($type: secondary);
+  }
+}

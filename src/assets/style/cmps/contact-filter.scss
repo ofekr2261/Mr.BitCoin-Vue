@@ -1,0 +1,14 @@
+.contact-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  margin-inline-end: 45px;
+
+  input {
+    border: 1px solid $p-clr1;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+}

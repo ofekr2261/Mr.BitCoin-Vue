@@ -1,0 +1,87 @@
+.app-header {
+  color: $almost-black;
+  box-shadow: rgb(0 0 0 / 19%) 0px 1px 5px;
+  font-size: 1.1rem;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+
+  &:hover {
+    box-shadow: rgb(9 30 66 / 15%) 0px 0.5rem 1rem 0px;
+  }
+
+  .logo-container {
+    display: flex;
+    gap: 10px;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .user-info {
+    color: black;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    top: -250px;
+    // transition: all 0.4s;
+
+    img {
+      margin: 0;
+      padding-right: 40px;
+    }
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .router-link-active:not(.logo) {
+    color: $p-clr1;
+  }
+
+  @media (max-width: $break-normal) {
+    .menu-btn {
+      display: block;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    nav,
+    .rate,
+    .user-info {
+      display: none;
+    }
+
+    .menu-open {
+      position: fixed;
+      padding: 50px;
+      background-color: white;
+      display: block;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+      width: 100%;
+      top: 60px;
+      left: 0;
+      box-shadow: rgb(0 0 0 / 19%) 0px 2px 3px;
+    }
+  }
+}

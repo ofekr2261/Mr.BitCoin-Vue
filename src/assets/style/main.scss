@@ -1,0 +1,21 @@
+@import 'setup/variables';
+@import 'setup/mixins';
+// @import "setup/typography";
+
+@import 'basics/layout';
+@import 'basics/base';
+
+@import 'views/home.scss';
+@import 'views/contact-index.scss';
+@import 'views/contact-details.scss';
+
+@import 'views/login-signup.scss';
+// @import 'cmps/contact-edit.scss';
+
+@import 'cmps/app-header.scss';
+@import 'cmps/app-footer.scss';
+@import 'cmps/contact-list.scss';
+@import 'cmps/stats.scss';
+@import 'cmps/contact-preview.scss';
+@import 'cmps/contact-filter.scss';
+@import 'cmps/user-msg.scss';

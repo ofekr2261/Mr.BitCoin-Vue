@@ -1,0 +1,15 @@
+.contact-preview {
+  padding: 10px;
+  border: 1px solid #f7931a;
+  border-radius: 4px;
+  max-width: 300px;
+  cursor: pointer;
+
+  p {
+    margin-inline-start: 35px;
+  }
+
+  &:hover {
+    background-color: rgba(173, 216, 230, 0.813);
+  }
+}
