@@ -5,9 +5,7 @@ export const contactStore = {
     contacts: [],
   },
   getters: {
-    contacts({ contacts }) {
-      return contacts
-    },
+    contacts: ({ contacts }) => contacts,
   },
   mutations: {
     setContacts(state, { contacts }) {
@@ -19,8 +17,10 @@ export const contactStore = {
       )
     },
     addContact(state, { contact }) {
-      state.contacts.push(contact)
-      console.log('state.contacts:', state.contacts)
+      const existingContact = state.contacts.find((c) => c._id === contact._id)
+      if (!existingContact) {
+        state.contacts.push(contact)
+      }
     },
     updateContact(state, { contact }) {
       const idx = state.contacts.findIndex((p) => p._id === contact._id)
@@ -30,7 +30,7 @@ export const contactStore = {
   actions: {
     async loadContacts({ commit }, { filterBy }) {
       const contacts = await contactService.getContacts(filterBy)
-      commit({ type: 'setContacts', contacts })
+      commit('setContacts', { contacts })
     },
     async removeContact({ commit }, payload) {
       commit(payload)

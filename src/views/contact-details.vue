@@ -2,7 +2,6 @@
   <div v-if="contact" class="main-layout">
     <div class="contact-details">
       <img :src="'https://robohash.org/' + contact.name + '?set=set5'" alt="" />
-      <!-- <img :src="'https://api.dicebear.com/5.x/open-peeps/svg?seed=' + contact.name" alt=""> -->
       <div class="info-container">
         <h2>{{ contact.name }}</h2>
         <h3>Email: {{ contact.email }}</h3>
@@ -69,7 +68,6 @@ export default {
         : (contact.balance = this.tip)
       if (!contact.transaction) contact.transaction = []
       contact.transaction.push(transaction)
-      // await this.$store.dispatch({ type: "saveContact", contact });
       contactService.saveContact(contact)
     },
   },

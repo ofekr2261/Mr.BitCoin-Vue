@@ -26,6 +26,11 @@ export default {
   async created() {
     const filterBy = this.filterBy
     this.$store.dispatch({ type: 'loadContacts', filterBy })
+
+    if (!this.isContactCreatedListenerSet) {
+      eventBus.$on('contactCreated', this.handleContactCreated)
+      this.isContactCreatedListenerSet = true
+    }
   },
   methods: {
     async removeContact(contactId) {
@@ -50,6 +55,9 @@ export default {
     onSetFilterBy(filterBy) {
       this.filterBy = filterBy
       this.$store.dispatch({ type: 'loadContacts', filterBy })
+    },
+    handleContactCreated(contact) {
+      this.$store.commit({ type: 'addContact', contact })
     },
   },
   computed: {

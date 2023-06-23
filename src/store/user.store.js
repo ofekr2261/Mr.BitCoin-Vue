@@ -8,9 +8,6 @@ export const userStore = {
     user({ user }) {
       return user
     },
-    // products(state) {
-    //     return []
-    // },
   },
   mutations: {
     updateOrder(state, { order }) {

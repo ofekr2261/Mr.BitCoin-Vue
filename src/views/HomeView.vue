@@ -5,7 +5,7 @@
       <h3 class="subtitle">
         Bitcoin is the easiest way to transact at a very low cost..
       </h3>
-      <RouterLink class="add-link" to="/contact"
+      <RouterLink class="add-link" to="/signup"
         ><button class="primary">Start now</button></RouterLink
       >
       <svg
