@@ -2,7 +2,7 @@
   <div class="contact-index main-layout full">
     <ContactsFilter @filter="onSetFilterBy" />
     <RouterLink class="add-link" to="/contact/edit"
-      ><button class="primary">Add a Contacts</button></RouterLink
+      ><button class="primary">Add a Contact</button></RouterLink
     >
     <ContactsList
       @remove="removeContact"

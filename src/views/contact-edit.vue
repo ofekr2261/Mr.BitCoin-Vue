@@ -1,24 +1,28 @@
 <template>
   <form @submit.prevent="save" v-if="contact" class="contact-edit main-layout">
-    <h2>{{ getTitle }}</h2>
-    <img :src="'https://robohash.org/' + contact.name + '?set=set5'" alt="" />
-    <input
-      type="text"
-      v-model="contact.name"
-      placeholder="Enter contact name"
-    />
-    <input
-      type="text"
-      v-model="contact.email"
-      placeholder="Enter contact email"
-    />
-    <input
-      type="text"
-      v-model.number="contact.phone"
-      placeholder="Enter contact phone"
-    />
-    <button class="primary">Save</button>
-    <a @click="clearInfo" class="clear-btn">Clear</a>
+    <div :class="['box', { 'custom-box': contact.name }]">
+      <h2>{{ getTitle }}</h2>
+      <img :src="'https://robohash.org/' + contact.name + '?set=set5'" alt="" />
+      <div class="input-container">
+        <input
+          type="text"
+          v-model="contact.name"
+          placeholder="Enter contact name..."
+        />
+        <input
+          type="email"
+          v-model="contact.email"
+          placeholder="Enter contact email..."
+        />
+        <input
+          type="tel"
+          v-model.number="contact.phone"
+          placeholder="Enter contact phone..."
+        />
+      </div>
+      <button class="primary">Save</button>
+      <a @click="clearInfo" class="clear-btn">Clear</a>
+    </div>
     <RouterLink class="close-btn" to="/contact"
       ><span class="material-symbols-outlined">close</span></RouterLink
     >
