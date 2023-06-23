@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ContactIndex from '../views/contact-index.vue'
 import ContactDetails from '../views/contact-details.vue'
 import ContactEdit from '../views/contact-edit.vue'
-import Stats from '../cmps/stats.vue'
+import StatsView from '../views/stats-view.vue'
 import LoginSignup from '../views/login-signup.vue'
 
 const router = createRouter({
@@ -42,7 +42,7 @@ const router = createRouter({
     {
       path: '/stats',
       name: 'stats',
-      component: Stats,
+      component: StatsView,
     },
     // {
     //   path: '/about',

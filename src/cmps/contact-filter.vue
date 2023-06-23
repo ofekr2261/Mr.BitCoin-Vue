@@ -5,7 +5,7 @@
       @input="onFilter"
       v-model="filterBy.name"
       type="text"
-      placeholder="Enter name"
+      placeholder="Enter name..."
     />
   </div>
 </template>

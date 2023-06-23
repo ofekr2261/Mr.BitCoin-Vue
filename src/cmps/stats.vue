@@ -4,67 +4,67 @@
     <div v-if="bitcoinStats">
       <table>
         <tr>
-          <td>Price in USD:</td>
+          <td>Price in USD</td>
           <td>${{ bitcoinStats.current_price.toLocaleString() }}</td>
         </tr>
         <tr>
-          <td>Market Cap in USD:</td>
+          <td>Market Cap in USD</td>
           <td>${{ bitcoinStats.market_cap.toLocaleString() }}</td>
         </tr>
         <tr>
-          <td>Market Cap Rank:</td>
+          <td>Market Cap Rank</td>
           <td>{{ bitcoinStats.market_cap_rank }}</td>
         </tr>
         <tr>
-          <td>Fully Diluted Valuation:</td>
+          <td>Fully Diluted Valuation</td>
           <td>${{ bitcoinStats.fully_diluted_valuation.toLocaleString() }}</td>
         </tr>
 
         <tr>
-          <td>High in 24h:</td>
+          <td>High in 24h</td>
           <td>${{ bitcoinStats.high_24h.toLocaleString() }}</td>
         </tr>
         <tr>
-          <td>Low in 24h:</td>
+          <td>Low in 24h</td>
           <td>${{ bitcoinStats.low_24h.toLocaleString() }}</td>
         </tr>
 
         <tr>
-          <td>Price Change Percentage in 24h:</td>
+          <td>Price Change Percentage in 24h</td>
           <td>{{ bitcoinStats.price_change_percentage_24h }}%</td>
         </tr>
 
         <tr>
-          <td>Market Cap Change Percentage in 24h:</td>
+          <td>Market Cap Change Percentage in 24h</td>
           <td>{{ bitcoinStats.market_cap_change_percentage_24h }}%</td>
         </tr>
 
         <tr>
-          <td>All Time High:</td>
+          <td>All Time High</td>
           <td>${{ bitcoinStats.ath.toLocaleString() }}</td>
         </tr>
         <tr>
-          <td>All Time High Change Percentage:</td>
+          <td>All Time High Change Percentage</td>
           <td>{{ bitcoinStats.ath_change_percentage }}%</td>
         </tr>
         <tr>
-          <td>All Time High Date:</td>
+          <td>All Time High Date</td>
           <td>{{ bitcoinStats.ath_date }}</td>
         </tr>
         <tr>
-          <td>All Time Low:</td>
+          <td>All Time Low</td>
           <td>${{ bitcoinStats.atl.toLocaleString() }}</td>
         </tr>
         <tr>
-          <td>All Time Low Change Percentage:</td>
+          <td>All Time Low Change Percentage</td>
           <td>{{ bitcoinStats.atl_change_percentage }}%</td>
         </tr>
         <tr>
-          <td>All Time Low Date:</td>
+          <td>All Time Low Date</td>
           <td>{{ bitcoinStats.atl_date }}</td>
         </tr>
         <tr>
-          <td>Last Updated:</td>
+          <td>Last Updated</td>
           <td>{{ bitcoinStats.last_updated }}</td>
         </tr>
       </table>

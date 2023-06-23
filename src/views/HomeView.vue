@@ -3,7 +3,8 @@
     <div class="home-hero full main-layout">
       <h1 class="title">Bitcoin for Individuals</h1>
       <h3 class="subtitle">
-        Bitcoin is the easiest way to transact at a very low cost..
+        Unlock seamless transactions with Bitcoin's unrivaled affordability and
+        convenience.
       </h3>
       <RouterLink class="add-link" to="/signup"
         ><button class="primary">Start now</button></RouterLink

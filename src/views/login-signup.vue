@@ -1,31 +1,33 @@
 <template>
   <div class="login-signup">
-    <h2 v-if="isSignUp" class="login-title">Sign Up</h2>
-    <h2 v-if="!isSignUp" class="login-title">Log In</h2>
-    <p v-if="isSignUp" class="login-subtitle large">
-      Already a member?
-      <span class="toggle-btn" @click="onToggleSignUp">Log in</span>
-    </p>
-    <p v-if="!isSignUp" class="login-subtitle large">
-      Don't have an account?
-      <span class="toggle-btn" @click="onToggleSignUp">Sign up</span>
-    </p>
-    <form class="login-signup-form" @submit.prevent="onSubmit">
-      <div className="form-container">
-        <div className="txt-field">
-          <input type="text" v-model="user.name" placeholder="User name.." />
+    <div class="box">
+      <h2 v-if="isSignUp" class="login-title">Sign Up</h2>
+      <h2 v-if="!isSignUp" class="login-title">Log In</h2>
+      <p v-if="isSignUp" class="login-subtitle large">
+        Already a member?
+        <span class="toggle-btn" @click="onToggleSignUp">Log in</span>
+      </p>
+      <p v-if="!isSignUp" class="login-subtitle large">
+        Don't have an account?
+        <span class="toggle-btn" @click="onToggleSignUp">Sign up</span>
+      </p>
+      <form class="login-signup-form" @submit.prevent="onSubmit">
+        <div className="form-container">
+          <div className="txt-field">
+            <input type="text" v-model="user.name" placeholder="User name..." />
+          </div>
+          <div>
+            <input
+              type="password"
+              v-model="user.password"
+              placeholder="Password..."
+            />
+          </div>
+          <button v-if="isSignUp" className="login-signup-btn">Signup</button>
+          <button v-if="!isSignUp" className="login-signup-btn">Login</button>
         </div>
-        <div>
-          <input
-            type="password"
-            v-model="user.password"
-            placeholder="Password"
-          />
-        </div>
-        <button v-if="isSignUp" className="login-signup-btn">Signup</button>
-        <button v-if="!isSignUp" className="login-signup-btn">Login</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </template>
 
