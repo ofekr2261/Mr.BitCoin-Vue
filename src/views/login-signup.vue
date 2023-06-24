@@ -54,14 +54,15 @@ export default {
           fullname: this.user.name,
         })
         this.$router.push('/')
+        eventBus.emit('user-updated', userService.getLoggedinUser())
       } else {
         const isLoggedIn = await userService.login({
           username: this.user.name,
           password: this.user.password,
         })
         if (isLoggedIn) {
-          eventBus.emit('user-updated', userService.getLoggedinUser())
           this.$router.push('/')
+          eventBus.emit('user-updated', userService.getLoggedinUser())
         }
       }
     },
