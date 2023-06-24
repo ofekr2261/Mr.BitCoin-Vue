@@ -1,4 +1,4 @@
-// import { userStore } from './user.store.js'
+import { userStore } from './user.store.js'
 import { contactStore } from './contact.store.js'
 import { createStore } from 'vuex'
 
@@ -12,6 +12,7 @@ export const myStore = createStore({
   actions: {},
   modules: {
     contactStore,
+    userStore,
   },
 })
 

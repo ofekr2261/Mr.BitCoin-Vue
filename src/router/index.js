@@ -30,6 +30,11 @@ const router = createRouter({
       component: ContactEdit,
     },
     {
+      path: '/login',
+      name: 'login',
+      component: LoginSignup,
+    },
+    {
       path: '/signup',
       name: 'signup',
       component: LoginSignup,
