@@ -33,6 +33,8 @@
 
 <script>
 import { userService } from '../services/user.service.js'
+import { eventBus } from '../services/eventBus.service'
+
 export default {
   data() {
     return {
@@ -57,10 +59,12 @@ export default {
           username: this.user.name,
           password: this.user.password,
         })
-        if (isLoggedIn) this.$router.push('/')
+        if (isLoggedIn) {
+          eventBus.emit('user-updated', userService.getLoggedinUser())
+          this.$router.push('/')
+        }
       }
     },
-
     onToggleSignUp() {
       this.isSignUp = !this.isSignUp
     },

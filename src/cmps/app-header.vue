@@ -13,8 +13,8 @@
         >menu</span
       >
 
-      <div class="user-info" v-if="isLoggedIn">
-        <span>Welcome {{ user.fullname }}!</span>
+      <div class="user-info" v-if="isLoggedIn && user">
+        <span v-if="user">{{ welcomeMessage }}</span>
       </div>
       <nav ref="nav">
         <RouterLink @click="closeNavbar" to="/">Home</RouterLink>
@@ -26,16 +26,18 @@
 </template>
 
 <script>
-import { userService } from '../services/user.service.js'
-import { bitcoinService } from '../services/bitcoin.service.js'
+import { eventBus } from '../services/eventBus.service'
+
 export default {
   data() {
     return {
       user: null,
     }
   },
-  async created() {
-    this.user = userService.getLoggedinUser()
+  created() {
+    eventBus.on('user-updated', (user) => {
+      this.user = user
+    })
   },
   methods: {
     toggleNavbar() {
@@ -48,6 +50,9 @@ export default {
   computed: {
     isLoggedIn() {
       return this.user !== null
+    },
+    welcomeMessage() {
+      return `Welcome ${this.user.fullname}!`
     },
   },
 }

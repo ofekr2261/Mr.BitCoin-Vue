@@ -44,5 +44,23 @@ export const userStore = {
         return balance
       })
     },
+    async login({ commit }, { username, password }) {
+      const isLoggedIn = await userService.login({ username, password })
+      if (isLoggedIn) {
+        const user = {
+          name: username,
+        }
+        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user))
+        commit({ type: 'setUser', user })
+        return true
+      }
+      return false
+    },
+
+    async signup({ commit }, { username, password, fullname }) {
+      await userService.signup({ username, password, fullname })
+      const user = userService.getLoggedinUser()
+      commit({ type: 'setUser', user })
+    },
   },
 }
