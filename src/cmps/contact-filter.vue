@@ -1,7 +1,8 @@
 <template>
   <div class="contact-filter full">
-    <p class="large">Search</p>
+    <p class="large" @click="focusInput">Search</p>
     <input
+      ref="searchInput"
       @input="onFilter"
       v-model="filterBy.name"
       type="text"
@@ -20,6 +21,9 @@ export default {
     }
   },
   methods: {
+    focusInput() {
+      this.$refs.searchInput.focus()
+    },
     onFilter() {
       this.$emit('filter', this.filterBy)
     },
