@@ -44,7 +44,7 @@ export default {
         labels: this.getDataLabels,
         datasets: [
           {
-            label: 'Avarage block size (in MB)',
+            label: 'Avarage USD market price across bitcoin exchanges',
             backgroundColor: '#f7931a99',
             data: this.getDatasetData,
           },

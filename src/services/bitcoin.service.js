@@ -7,6 +7,12 @@ export const bitcoinService = {
   getAvgBlockSize,
 }
 
+const CACHE_DURATION = {
+  rate: 5 * 60 * 1000,
+  'prices-history': 5 * 60 * 1000,
+  'block-size-avgs': 5 * 60 * 1000,
+}
+
 async function getRate() {
   let rate = storageService.load('rate')
   if (rate) {
@@ -19,6 +25,9 @@ async function getRate() {
     )
     rate = response.data.bitcoin.usd
     storageService.save('rate', rate)
+    setTimeout(() => {
+      storageService.remove('rate')
+    }, CACHE_DURATION.rate)
     return rate
   } catch (err) {
     throw new Error('Error fetching rate: ' + err.message)
@@ -37,6 +46,9 @@ async function getMarketPriceHistory() {
     )
     pricesHistory = response.data.values
     storageService.save('prices-history', pricesHistory)
+    setTimeout(() => {
+      storageService.remove('prices-history')
+    }, CACHE_DURATION['prices-history'])
     return pricesHistory
   } catch (err) {
     throw new Error('Error fetching market price history: ' + err.message)
@@ -55,6 +67,9 @@ async function getAvgBlockSize() {
     )
     blockSizeAvgs = response.data.values
     storageService.save('block-size-avgs', blockSizeAvgs)
+    setTimeout(() => {
+      storageService.remove('block-size-avgs')
+    }, CACHE_DURATION['block-size-avgs'])
     return blockSizeAvgs
   } catch (err) {
     throw new Error('Error fetching average block size: ' + err.message)
