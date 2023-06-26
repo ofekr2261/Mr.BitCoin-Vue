@@ -5,11 +5,22 @@ import { createStore } from 'vuex'
 export const myStore = createStore({
   strict: true,
   state() {
-    return {}
+    return {
+      counter: 100,
+    }
   },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    setCounter(state, value) {
+      state.counter = value
+    },
+  },
+
+  actions: {
+    decrementCounter({ commit }, tip) {
+      commit('decrementCounter', tip)
+    },
+  },
   modules: {
     contactStore,
     userStore,

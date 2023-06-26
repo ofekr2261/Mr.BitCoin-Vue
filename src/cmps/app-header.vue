@@ -32,11 +32,18 @@ export default {
   data() {
     return {
       user: null,
+      counter: 100,
     }
   },
   created() {
     eventBus.on('user-updated', (user) => {
       this.user = user
+      this.updateCounter()
+    })
+
+    eventBus.on('retrieve-user-data', () => {
+      this.user = eventBus.emitSync('get-user')
+      this.updateCounter()
     })
   },
   methods: {
@@ -46,13 +53,18 @@ export default {
     closeNavbar() {
       this.$refs.nav.classList.remove('menu-open')
     },
+    updateCounter() {
+      if (this.user) {
+        this.$store.dispatch('decrementCounter', this.user.tipCount || 0)
+      }
+    },
   },
   computed: {
     isLoggedIn() {
       return this.user !== null
     },
     welcomeMessage() {
-      return `Welcome ${this.user.fullname}!`
+      return `Welcome ${this.user.fullname}! ${this.$store.state.counter}₿`
     },
   },
 }

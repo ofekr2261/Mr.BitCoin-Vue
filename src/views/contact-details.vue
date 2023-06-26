@@ -11,8 +11,8 @@
           Balance: {{ contact.balance.toFixed(2) }} ₿
         </h3>
         <pre v-if="contact.transaction">
-transaction: {{ contact.transaction }}</pre
-        >
+          transaction: {{ contact.transaction }}
+        </pre>
         <form @submit.prevent="onSubmit" class="tip-form">
           <input v-model="tip" type="number" />
           <button>Tip!</button>
@@ -45,6 +45,8 @@ export default {
     const contactId = this.$route.params._id
     this.contact = await contactService.getContactById(contactId)
     this.user = await userService.getLoggedinUser()
+
+    eventBus.emit('retrieve-user-data')
   },
   methods: {
     async removeContact(contactId) {
@@ -58,22 +60,42 @@ export default {
       eventBus.emit('user-msg', msg)
     },
     async onSubmit() {
+      if (!this.tip || this.tip <= 0) {
+        return
+      }
+
+      const tipAmount = Number(this.tip)
+
       const transaction = {
         at: new Date(),
         by: this.user.fullname,
-        amount: `${this.tip}₿`,
+        amount: `${tipAmount}₿`,
       }
+
       let updatedContact = {
         ...this.contact,
         balance: this.contact.balance
-          ? this.contact.balance + this.tip
-          : this.tip,
+          ? this.contact.balance + tipAmount
+          : tipAmount,
         transaction: this.contact.transaction
           ? [...this.contact.transaction, transaction]
           : [transaction],
       }
+
       await contactService.saveContact(updatedContact)
       this.contact = updatedContact
+
+      this.user.tipCount = (this.user.tipCount || 0) + tipAmount
+
+      eventBus.emit('user-updated', this.user)
+      eventBus.emit('tip-submitted', tipAmount)
+
+      const counter = this.$store.state.counter
+      const remainingCounter = counter - tipAmount
+      this.$store.commit(
+        'setCounter',
+        remainingCounter >= 0 ? remainingCounter : 0
+      )
     },
   },
 }
