@@ -49,7 +49,7 @@
         </tr>
         <tr>
           <td>All Time High Date</td>
-          <td>{{ bitcoinStats.ath_date }}</td>
+          <td>{{ formatLastUpdated(bitcoinStats.ath_date) }}</td>
         </tr>
         <tr>
           <td>All Time Low</td>
@@ -61,11 +61,11 @@
         </tr>
         <tr>
           <td>All Time Low Date</td>
-          <td>{{ bitcoinStats.atl_date }}</td>
+          <td>{{ formatLastUpdated(bitcoinStats.atl_date) }}</td>
         </tr>
         <tr>
           <td>Last Updated</td>
-          <td>{{ bitcoinStats.last_updated }}</td>
+          <td>{{ formatLastUpdated(bitcoinStats.last_updated) }}</td>
         </tr>
       </table>
     </div>
@@ -99,6 +99,10 @@ export default {
         .catch((error) => {
           console.error('Error fetching Bitcoin statistics:', error)
         })
+    },
+    formatLastUpdated(dateString) {
+      const date = new Date(dateString)
+      return date.toLocaleString('he-IL')
     },
   },
 }
