@@ -53,7 +53,7 @@ export default {
           password: this.user.password,
           fullname: this.user.name,
         })
-        this.$router.push('/')
+        this.$router.push('/contact')
         eventBus.emit('user-updated', userService.getLoggedinUser())
       } else {
         const isLoggedIn = await userService.login({
@@ -61,7 +61,7 @@ export default {
           password: this.user.password,
         })
         if (isLoggedIn) {
-          this.$router.push('/')
+          this.$router.push('/contact')
           eventBus.emit('user-updated', userService.getLoggedinUser())
         }
       }
