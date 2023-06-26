@@ -32,7 +32,7 @@ export default {
       try {
         this.$store.dispatch({ type: 'removeContact', contactId })
         const msg = {
-          txt: `Contacts ${contactId} deleted.`,
+          txt: `Contact ${contactId} deleted.`,
           type: 'success',
           timeout: 2500,
         }
